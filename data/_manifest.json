@@ -1,0 +1,61 @@
+{
+  "synced_at": "2026-03-30T05:03:25.013Z",
+  "table_count": 11,
+  "tables": [
+    {
+      "table": "article",
+      "row_count": 26,
+      "file": "article.json"
+    },
+    {
+      "table": "bank",
+      "row_count": 9,
+      "file": "bank.json"
+    },
+    {
+      "table": "commonaccount",
+      "row_count": 145,
+      "file": "commonaccount.json"
+    },
+    {
+      "table": "commondocument",
+      "row_count": 14,
+      "file": "commondocument.json"
+    },
+    {
+      "table": "food",
+      "row_count": 12,
+      "file": "food.json"
+    },
+    {
+      "table": "image",
+      "row_count": 1,
+      "file": "image.json"
+    },
+    {
+      "table": "music",
+      "row_count": 37,
+      "file": "music.json"
+    },
+    {
+      "table": "podcast",
+      "row_count": 2,
+      "file": "podcast.json"
+    },
+    {
+      "table": "routine",
+      "row_count": 2,
+      "file": "routine.json"
+    },
+    {
+      "table": "subscription",
+      "row_count": 30,
+      "file": "subscription.json"
+    },
+    {
+      "table": "video",
+      "row_count": 3,
+      "file": "video.json"
+    }
+  ]
+}
