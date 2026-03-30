@@ -2,11 +2,17 @@ name: Hourly Supabase Table Sync
 
 on:
   workflow_dispatch:
+  repository_dispatch:
+    types: [external-sync]
   schedule:
     - cron: "22 * * * *"
 
 permissions:
   contents: write
+
+concurrency:
+  group: supabase-table-sync
+  cancel-in-progress: false
 
 jobs:
   sync:
@@ -15,6 +21,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Show trigger source
+        run: echo "Triggered by ${{ github.event_name }}"
 
       - name: Set up Node.js
         uses: actions/setup-node@v4

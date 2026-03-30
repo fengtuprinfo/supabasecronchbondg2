@@ -5,6 +5,7 @@ This repository syncs Supabase table data into GitHub as JSON on a schedule.
 ## What it does
 
 - Runs a GitHub Actions workflow every hour
+- Supports manual trigger and external trigger as a backup
 - Discovers tables available to the configured Supabase anon key
 - Downloads all rows from each accessible table
 - Stores the exported files under `data/*.json`
@@ -32,8 +33,33 @@ The workflow file is:
 
 It runs on:
 
-- every hour at minute `0`
+- every hour at minute `22`
 - manual trigger from the Actions tab
+- external trigger through `repository_dispatch`
+
+## External Trigger Backup
+
+Keep the GitHub schedule enabled, and add an external cron service as a backup.
+
+Recommended approach:
+
+- use `cron-job.org` or another external scheduler
+- call the GitHub `repository_dispatch` API once per hour at minute `22` or a few minutes later
+- use a GitHub personal access token with access to this repository
+
+Example request:
+
+```bash
+curl -X POST \
+  -H "Accept: application/vnd.github+json" \
+  -H "Authorization: Bearer YOUR_GITHUB_TOKEN" \
+  https://api.github.com/repos/abuhg17/cronsupabaseabuhg17/dispatches \
+  -d "{\"event_type\":\"external-sync\"}"
+```
+
+Suggested external schedule:
+
+- minute `27` of every hour as a backup for the built-in GitHub schedule at minute `22`
 
 ## Local Run
 
